@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+Main
+{% endblock %}
+
+{% block heading %}
+Clean Blog Very Cool
+{% endblock %}
+
+{% block subheading %}
+Vip luxury platinum village
+{% endblock %}
+
+{% block bg %}
+style="background-image: url('{% static 'assets/img/home-bg.jpg' %}')"
+{% endblock %}
+
+{% block content %}
+{% include 'blog/post_list.html' %}
+{% endblock %}
