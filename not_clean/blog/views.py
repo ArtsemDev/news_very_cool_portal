@@ -1,8 +1,5 @@
 from django.http import HttpRequest
-from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, TemplateView
+from django.views.generic import ListView, DetailView, TemplateView
 
 from .models import Post
 from .forms import ContactForm
