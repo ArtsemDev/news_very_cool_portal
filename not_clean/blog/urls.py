@@ -5,7 +5,7 @@ from .views import PostListView, PostDetailView, AboutTemplateView, ContactCreat
 
 urlpatterns = [
     path('', PostListView.as_view(), name='main'),
-    path('about', AboutTemplateView.as_view(), name='about'),
-    path('contact', ContactCreateView.as_view(), name='contact'),
-    path('<slug:post_slug>', PostDetailView.as_view(), name='post'),
+    path('about/', AboutTemplateView.as_view(), name='about'),
+    path('contact/', ContactCreateView.as_view(), name='contact'),
+    path('<slug:post_slug>/', PostDetailView.as_view(), name='post'),
 ]

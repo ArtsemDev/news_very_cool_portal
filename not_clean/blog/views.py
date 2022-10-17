@@ -26,6 +26,7 @@ class PostListView(ContextMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(PostListView, self).get_context_data()
         context.update(self.context)
+        context['user'] = self.request.user
         return context
 
 
@@ -38,6 +39,7 @@ class PostDetailView(ContextMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(PostDetailView, self).get_context_data()
         context.update(self.context)
+        context['user'] = self.request.user
         return context
 
 
@@ -58,6 +60,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magna
                 '''
             }
         )
+        context['user'] = self.request.user
         return context
 
 
@@ -70,6 +73,7 @@ class ContactCreateView(ContextMixin, TemplateView):
         context['heading'] = 'Contact :)'
         context['subheading'] = 'Please...'
         context['contact_form'] = ContactForm()
+        context['user'] = self.request.user
         return context
 
     def post(self, request: HttpRequest):
