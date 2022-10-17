@@ -1,8 +1,8 @@
 from django.http import HttpRequest
 from django.views.generic import ListView, DetailView, TemplateView
 
-from .models import Post
 from .forms import ContactForm
+from .models import Post
 
 
 class ContextMixin:
