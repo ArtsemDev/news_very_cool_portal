@@ -13,7 +13,7 @@ class ContactForm(ModelForm):
                     'class': 'form-control',
                     'id': 'name',
                     'type': 'text',
-                    'placeholder': 'Кто по масти?',
+                    'placeholder': 'Name',
                     'required': True
                 }
             ),
@@ -22,7 +22,7 @@ class ContactForm(ModelForm):
                     'class': 'form-control',
                     'id': 'email',
                     'type': 'email',
-                    'placeholder': 'Мыло',
+                    'placeholder': 'Email',
                     'required': True
                 }
             ),
@@ -30,7 +30,7 @@ class ContactForm(ModelForm):
                 attrs={
                     'class': 'form-control',
                     'id': 'message',
-                    'placeholder': 'Малява',
+                    'placeholder': 'Message',
                     'style': 'height: 12rem',
                     'required': True
                 }
