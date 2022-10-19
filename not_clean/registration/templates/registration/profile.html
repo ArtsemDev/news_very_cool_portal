@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Profile</title>
 </head>
 <body>
 {{ user.username }}
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button>Create</button>
-</form>
+{{ user.email }}
+{% for post in user_posts %}
+{{ post }}
+{% endfor %}
 </body>
 </html>

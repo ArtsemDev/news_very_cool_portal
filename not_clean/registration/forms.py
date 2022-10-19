@@ -1,67 +1,63 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
-from django.contrib.auth.models import User
-from django.forms import TextInput, EmailInput, PasswordInput, CharField, ModelForm
-
-from blog.models import Post
+from django.forms import TextInput, PasswordInput, EmailInput, CharField, EmailField
 
 
 class SignUpForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2')
-        widgets = {
-            'username': TextInput(
-                attrs={
-                    'name': 'name',
-                    'id': 'name',
-                    'placeholder': 'Your Username'
-                }
-            ),
-            'email': EmailInput(
-                attrs={
-                    'name': 'email',
-                    'id': 'email',
-                    'placeholder': 'Your Email'
-                }
-            ),
-            'password1': PasswordInput(
-                attrs={
-                    'name': 'pass',
-                    'id': 'pass',
-                    'placeholder': 'Your Password'
-                }
-            ),
-            'password2': PasswordInput(
-                attrs={
-                    'name': 're_pass',
-                    'id': 're_pass',
-                    'placeholder': 'Repeat Password'
-                }
-            ),
-        }
+
+    username = CharField(
+        widget=TextInput(
+            attrs={
+                'name': 'name',
+                'id': 'name',
+                'placeholder': 'Your Username'
+            }
+        )
+    )
+    password1 = CharField(
+        widget=PasswordInput(
+            attrs={
+                'name': 'pass',
+                'id': 'pass',
+                'placeholder': 'Enter Your Password'
+            }
+        )
+    )
+    password2 = CharField(
+        widget=PasswordInput(
+            attrs={
+                'name': 're_pass',
+                'id': 're_pass',
+                'placeholder': 'Repeat Your Password'
+            }
+        )
+    )
+    email = EmailField(
+        widget=EmailInput(
+            attrs={
+                'name': 'email',
+                'id': 'email',
+                'placeholder': 'Enter Your Email'
+            }
+        )
+    )
 
 
 class SignInForm(AuthenticationForm):
-    username = UsernameField(widget=TextInput(
-        attrs={
-            'name': 'your_name',
-            'id': 'your_name',
-            'placeholder': 'Your Username'
-        }
-    )
+    username = UsernameField(
+        widget=TextInput(
+            attrs={
+                'name': 'your_name',
+                'id': 'your_name',
+                'placeholder': 'Enter Your Username'
+            }
+        )
     )
     password = CharField(
-        label="Password",
-        strip=False,
-        widget=PasswordInput(attrs={
-            'name': 'your_pass',
-            'id': 'your_pass',
-            'placeholder': 'Your Password'
-        }),
+        widget=PasswordInput(
+            attrs={
+                'name': 'your_pass',
+                'id': 'your_pass',
+                'placeholder': 'Enter Your Password'
+            }
+        )
     )
-
-
-class PostForm(ModelForm):
-    class Meta:
-        model = Post
-        fields = ('title', 'subtitle', 'text', 'image', 'is_published')
