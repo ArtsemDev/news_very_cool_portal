@@ -1,4 +1,5 @@
 from django.http import HttpRequest
+from django.utils.translation import gettext as _
 from django.views.generic import ListView, DetailView, TemplateView
 
 from .forms import ContactForm
@@ -51,8 +52,8 @@ class AboutTemplateView(ContextMixin, TemplateView):
         context.update(self.context)
         context.update(
             {
-                'about_title': 'About Very Cool Site',
-                'about_subtitle': 'Subtitle very cool',
+                'about_title': _('About Very Cool Site'),
+                'about_subtitle': _('Subtitle very cool'),
                 'about_about': '''
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!

@@ -8,31 +8,31 @@ class Post(models.Model):
 
     title = models.CharField(
         max_length=24,
-        verbose_name='заголовок'
+        verbose_name='title'
     )
     subtitle = models.CharField(
         max_length=24,
-        verbose_name='подзаголовок'
+        verbose_name='subtitle'
     )
     image = models.ImageField(
         upload_to='posts/',
-        verbose_name='картинка'
+        verbose_name='image'
     )
     text = models.TextField(
-        verbose_name='текст'
+        verbose_name='text'
     )
     is_published = models.BooleanField(
         default=False,
-        verbose_name='публикация'
+        verbose_name='is published'
     )
     date_published = models.DateTimeField(
         default=now(),
-        verbose_name='дата публикации'
+        verbose_name='date published'
     )
     author = models.ForeignKey(
         User,
         on_delete=models.DO_NOTHING,
-        verbose_name='автор'
+        verbose_name='author'
     )
     slug = models.SlugField(
         unique=True,
