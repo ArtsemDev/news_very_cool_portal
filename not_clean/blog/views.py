@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 
 from .forms import ContactForm
 from .models import Post
+from .tasks import send_message
 
 
 class ContextMixin:
@@ -30,6 +31,10 @@ class PostListView(ContextMixin, ListView):
         context.update(self.context)
         context['user'] = self.request.user
         return context
+
+    def get(self, request, *args, **kwargs):
+        send_message.delay('info@info.com')
+        return super(PostListView, self).get(request=request)
 
 
 class PostDetailView(ContextMixin, DetailView):
@@ -82,6 +87,7 @@ class ContactCreateView(ContextMixin, TemplateView):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
+            send_message.delay(request.POST.get('email'))
         return self.get(request=request)
 
 #
